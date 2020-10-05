@@ -55,6 +55,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FeedbackFormPOM.cs" />
+    <Compile Include="ParfumsPagePOM.cs" />
+    <Compile Include="ProductPagePOM.cs" />
     <Compile Include="SeleniumTests.cs" />
     <Compile Include="MainPagePOM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

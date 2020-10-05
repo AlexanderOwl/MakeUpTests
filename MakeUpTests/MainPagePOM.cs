@@ -17,7 +17,7 @@ namespace MakeUpTests
             this._driver = driver;
         }
         string test_url = "https://makeup.com.ua/";
-        By _menuItem_Parfums = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(1)");
+        By _menuItem_Parfums = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(1) > a");
         By _menuItem_MakeUp = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(2)");
         By _menuItem_Nails = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(3)");
         By _menuItem_Hair = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(4)");
@@ -34,11 +34,9 @@ namespace MakeUpTests
         By _headerBasket = By.ClassName("header-basket");
         By _buttonCallBack = By.CssSelector("body > div.site-wrap > div.main-wrap > header > div.header-middle > div > div.header-contact > div.button");
         By _sliderNext = By.ClassName("slider-arrow-next");
-        
-       
+        By _sliderPrev = By.ClassName("slider-arrow-prev");       
 
-        [FindsBy(How = How.ClassName, Using = "slider-arrow-prev")]
-        private IWebElement _sliderPrev;
+        
 
         By _sliderItem1 = By.CssSelector("#slider > ul.slides > li:nth-child(2)");
         By _sliderItem2 = By.CssSelector("#slider > ul.slides > li:nth-child(3)");
@@ -98,14 +96,22 @@ namespace MakeUpTests
             action.MoveToElement(slider).MoveToElement(_driver.FindElement(_sliderNext)).Click().Build().Perform();
                   
         }
+        public void clickSliderPrev()
+        {
+            Actions action = new Actions(_driver);
+            IWebElement slider = _driver.FindElement(By.Id("slider"));
+            action.MoveToElement(slider).MoveToElement(_driver.FindElement(_sliderPrev)).Click().Build().Perform();
 
+        }
         public void goToPage()
         {
-            _driver.Navigate().GoToUrl(test_url);
-
-          
+            _driver.Navigate().GoToUrl(test_url);          
         }
-
+        public MainPagePOM clickPrafums()
+        {
+            _driver.FindElement(_menuItem_Parfums).Click();
+            return this;
+        }
         public String getPageTitle()
         {
             return _driver.Title;
