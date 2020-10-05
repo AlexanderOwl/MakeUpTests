@@ -44,6 +44,7 @@ namespace MakeUpTests
             MainPagePOM mainPage;
             ParfumsPagePOM parfumPage;
             ProductPagePOM productPage;
+            FeedbackFormPOM feedbackFormPOM;
             [SetUp]
             public void openMainPage()
             {
@@ -51,15 +52,16 @@ namespace MakeUpTests
                 mainPage = new MainPagePOM(driver);
                 parfumPage = new ParfumsPagePOM(driver);
                 productPage = new ProductPagePOM(driver);
+                feedbackFormPOM = new FeedbackFormPOM(driver);
                 mainPage.goToPage();
                 driver.Manage().Window.Maximize();
-            }
-            
+            }            
             [TearDown]
             public void quit()
             {
                 driver.Quit();
             }
+
             [TestCase(0)]
             [TestCase(1)]
             [TestCase(2)]
@@ -74,18 +76,6 @@ namespace MakeUpTests
                 }
                 Assert.AreEqual(count, mainPage.GetNumOfActiveSliderItem());
             }
-
-            //[TestCase(0)]
-            //[TestCase(1)]
-            //[TestCase(2)]
-            //[TestCase(3)]
-            //[TestCase(4)]
-            //[TestCase(5)]
-            //public void WaitSliderRigth(int num)
-            //{                
-            //    driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
-            //    Assert.AreEqual(num, mainPage.GetNumOfActiveSliderItem());
-            //}
 
             [TestCase(1,5)]
             [TestCase(2,4)]
@@ -129,6 +119,18 @@ namespace MakeUpTests
                 productPage.clickButtonIncrease();
                 bool waitLoad = (new WebDriverWait(driver, TimeSpan.FromSeconds(20))).Until(ExpectedConditions.StalenessOf(driver.FindElement(By.CssSelector("body > div.popup.cart.ng-animate.ng-hide-animate > div > div.popup-content > div.product-list-wrap > ul > li > div > div.product__count-list > div.product__button-increase"))));
                 Assert.Greater(productPage.returnTotalPrice(), price);
+            }
+
+
+            [TestCase (1,"TestName")]
+            public void SendFeedbackForm(int id, string name, string email, string subj,string message)
+            {
+                feedbackFormPOM.goToPage();
+                feedbackFormPOM.selectDepartment(id);
+                feedbackFormPOM.inputName(name);
+                feedbackFormPOM.inputEmail(email);
+                feedbackFormPOM.inputSubj(subj);
+                feedbackFormPOM.inputMessage(message);
             }
         }
     }
