@@ -55,6 +55,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HeaderLinksPOM.cs" />
+    <Compile Include="HeaderLinksTest.cs" />
     <Compile Include="SeleniumTests.cs" />
     <Compile Include="MainPagePOM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
