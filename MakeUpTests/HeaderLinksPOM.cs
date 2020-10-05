@@ -17,7 +17,6 @@ namespace MakeUpTests
         By _linkArticle = By.CssSelector("body > div.site-wrap > div.main-wrap > header > div.header-top > div > div:nth-child(2) > ul > li:nth-child(4) > a");
         By _linkAboutShop = By.CssSelector("body > div.site-wrap > div.main-wrap > header > div.header-top > div > div:nth-child(2) > ul > li:nth-child(5) > a");
 
-
         public HeaderLinksPOM(IWebDriver driver)
         {
             this.driver = driver;
