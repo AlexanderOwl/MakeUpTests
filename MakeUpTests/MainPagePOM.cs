@@ -53,7 +53,9 @@ namespace MakeUpTests
         By _linkTw = By.ClassName("tw");
         By _linkIg = By.ClassName("ig");
 
-        
+        // By search
+        By _searchField = By.Id("search-input");
+        By _searchButton = By.CssSelector("body > div.site-wrap > div.main-wrap > header > div.header-middle > div > div.header-right > div:nth-child(2) > form > button.search-button");
 
         public bool elementHasClass(IWebElement element, string active)
         {
@@ -116,5 +118,13 @@ namespace MakeUpTests
         {
             return _driver.Title;
         }
+
+        public void SearchProduct(string nameProduct)
+        {
+            _driver.FindElement(_searchField).SendKeys(nameProduct);
+            _driver.FindElement(_searchButton).Click();
+        }
+
+        
     }
 }

@@ -21,7 +21,7 @@ namespace MakeUpTests
         {
             string Alphabet = "QWERTYUIOPASDFGHJKLZXCVBNMqwertyuiopasdfghjklzxcvbnm";
             Random randomlen = new Random();
-            int Length = randomlen.Next(5,12);
+            int Length = randomlen.Next(5, 12);
             Random rnd = new Random();
             StringBuilder sb = new StringBuilder(Length - 1);
             int Position;
@@ -29,14 +29,14 @@ namespace MakeUpTests
             for (int i = 0; i < Length; i++)
             {
                 Position = rnd.Next(0, Alphabet.Length - 1);
-                sb.Append(Alphabet[Position]);                
+                sb.Append(Alphabet[Position]);
             }
             sb.Append("@gmail.com");
             return sb.ToString();
         }
 
-        static IWebDriver driver; 
-       
+        static IWebDriver driver;
+
 
         [TestFixture]
         public class MainPageTests
@@ -45,17 +45,22 @@ namespace MakeUpTests
             ParfumsPagePOM parfumPage;
             ProductPagePOM productPage;
             FeedbackFormPOM feedbackFormPOM;
+            CatalogPOM CatalogPOM;
+
             [SetUp]
             public void openMainPage()
             {
-                driver = new ChromeDriver(@"D:\Proga\Курсы\MakeUpTests\packages\Selenium.WebDriver.ChromeDriver.85.0.4183.8700\driver\win32");
+
+                driver = new ChromeDriver(@"D:\chromedriver_win32\");
+                //  driver = new ChromeDriver(@"D:\Proga\Курсы\MakeUpTests\packages\Selenium.WebDriver.ChromeDriver.85.0.4183.8700\driver\win32");
                 mainPage = new MainPagePOM(driver);
                 parfumPage = new ParfumsPagePOM(driver);
                 productPage = new ProductPagePOM(driver);
                 feedbackFormPOM = new FeedbackFormPOM(driver);
+                CatalogPOM = new CatalogPOM(driver);
                 mainPage.goToPage();
                 driver.Manage().Window.Maximize();
-            }            
+            }
             [TearDown]
             public void quit()
             {
@@ -69,7 +74,7 @@ namespace MakeUpTests
             [TestCase(4)]
             [TestCase(5)]
             public void CLickSliderRigth(int count)
-            {               
+            {
                 for (int i = 0; i < count; i++)
                 {
                     mainPage.clickSliderNext();
@@ -77,11 +82,11 @@ namespace MakeUpTests
                 Assert.AreEqual(count, mainPage.GetNumOfActiveSliderItem());
             }
 
-            [TestCase(1,5)]
-            [TestCase(2,4)]
-            [TestCase(3,3)]
-            [TestCase(4,2)]
-            [TestCase(5,1)]
+            [TestCase(1, 5)]
+            [TestCase(2, 4)]
+            [TestCase(3, 3)]
+            [TestCase(4, 2)]
+            [TestCase(5, 1)]
             public void CLickSliderLeft(int click, int num)
             {
                 for (int i = 0; i < click; i++)
@@ -102,14 +107,14 @@ namespace MakeUpTests
             [Test] //nf
             public void SortPriceAsc()
             {
-                parfumPage.goToPage();               
-                parfumPage.clickSortItemPrice();                
+                parfumPage.goToPage();
+                parfumPage.clickSortItemPrice();
                 parfumPage.clickSortItemAscending();
                 new WebDriverWait(driver, driver.Manage().Timeouts().PageLoad);
                 Assert.Greater(parfumPage.returnLastItemPrice(), parfumPage.returnFirstItemPrice());
             }
 
-            [Test] 
+            [Test]
             public void CheckIncreaseTotalPrice()
             {
                 productPage.goToPage();
@@ -122,8 +127,8 @@ namespace MakeUpTests
             }
 
 
-            [TestCase (1,"TestName")]
-            public void SendFeedbackForm(int id, string name, string email, string subj,string message)
+            [TestCase(1, "TestName")]
+            public void SendFeedbackForm(int id, string name, string email, string subj, string message)
             {
                 feedbackFormPOM.goToPage();
                 feedbackFormPOM.selectDepartment(id);
@@ -131,6 +136,18 @@ namespace MakeUpTests
                 feedbackFormPOM.inputEmail(email);
                 feedbackFormPOM.inputSubj(subj);
                 feedbackFormPOM.inputMessage(message);
+            }
+
+            [TestCase("тушь")]
+            public void SearchProductWithSearchInput(string productName)
+            {
+                mainPage.goToPage();
+                mainPage.SearchProduct(productName);
+
+                bool hasTextPageHeader = CatalogPOM.HasTextPageHeader(productName);
+                bool hasProduct = CatalogPOM.HasProduct(productName);
+                Assert.True(hasTextPageHeader);
+                Assert.True(hasProduct);
             }
         }
     }

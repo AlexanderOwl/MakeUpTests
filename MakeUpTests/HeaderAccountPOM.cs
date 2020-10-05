@@ -52,7 +52,7 @@ namespace MakeUpTests
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             IWebElement element = driver.FindElement(_enter);
             string nameAccount = element.Text;
-          //  string nameAccount = driver.FindElement(_enter).Text;
+         
             return nameAccount;
         }
 

@@ -55,6 +55,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatalogPOM.cs" />
     <Compile Include="HeaderAccountPOM.cs" />
     <Compile Include="HeaderAccountTest.cs" />
     <Compile Include="HeaderLinksPOM.cs" />
