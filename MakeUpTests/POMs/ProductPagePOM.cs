@@ -36,13 +36,12 @@ namespace MakeUpTests
         }
         public double returnTotalPrice()
         {
-            double totalPrice = double.Parse(_driver.FindElement(_totalPrice).Text);
-            return totalPrice;
+            return double.Parse(_driver.FindElement(_totalPrice).Text);            
         }
         public double returnPrice()
         {
-            double price = double.Parse(_driver.FindElement(_price).Text);
-            return price;
+            return double.Parse(_driver.FindElement(_price).Text);            
         }
+     
     }
 }

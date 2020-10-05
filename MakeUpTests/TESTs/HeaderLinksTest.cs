@@ -11,7 +11,7 @@ namespace MakeUpTests
 {
   public  class HeaderLinksTest
     {
-        public IWebDriver driver = new ChromeDriver(@"D:\chromedriver_win32\");
+        public IWebDriver driver = new ChromeDriver(@"packages\Selenium.WebDriver.ChromeDriver.85.0.4183.8700\driver\win32");
         HeaderLinksPOM headerLinks;
 
 
