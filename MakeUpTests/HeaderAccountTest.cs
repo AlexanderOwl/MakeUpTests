@@ -29,10 +29,13 @@ namespace MakeUpTests
             headerAccount.TypeUserPassword("1313");
             headerAccount.ClickLogInButton();
 
-            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(60);
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(100);
 
             Assert.AreEqual("Кабинет", headerAccount.NameAccount());
         }
+
+
+
 
         [OneTimeTearDown]
         public void ClosePage()

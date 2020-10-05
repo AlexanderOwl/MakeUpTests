@@ -1,13 +1,9 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MakeUpTests
 {
-  public  class HeaderAccountPOM
+    public class HeaderAccountPOM
     {
         IWebDriver driver;
 
@@ -43,21 +39,24 @@ namespace MakeUpTests
             return this;
         }
 
-        
+
         public HeaderAccountPOM ClickLogInButton()
         {
             driver.FindElement(_logInButton).Click();
             return this;
         }
-        
+
 
         public string NameAccount()
         {
-            string nameAccount = driver.FindElement(_enter).Text;
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            IWebElement element = driver.FindElement(_enter);
+            string nameAccount = element.Text;
+          //  string nameAccount = driver.FindElement(_enter).Text;
             return nameAccount;
         }
 
-        
+
         public HeaderAccountPOM ClickRegistration()
         {
             driver.FindElement(_registration).Click();
