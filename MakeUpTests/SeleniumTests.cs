@@ -29,21 +29,42 @@ namespace MakeUpTests
             return sb.ToString();
         }
 
-        static IWebDriver driver = new ChromeDriver(@"D:\Proga\Курсы\MakeUpTests\packages\Selenium.WebDriver.ChromeDriver.85.0.4183.8700\driver\win32");
-        MainPagePOM mainPage = new MainPagePOM();
+        static IWebDriver driver; 
+       
 
         [TestFixture]
         public class MainPageTests
         {
+            MainPagePOM mainPage;
             [SetUp]
             public void openMainPage()
             {
-                driver.Navigate().GoToUrl("https://makeup.com.ua/");
+                driver = new ChromeDriver(@"D:\Proga\Курсы\MakeUpTests\packages\Selenium.WebDriver.ChromeDriver.85.0.4183.8700\driver\win32");
+                mainPage = new MainPagePOM(driver);
+                mainPage.goToPage();
+                driver.Manage().Window.Maximize();
             }
+            
             [TearDown]
             public void quit()
             {
                 driver.Quit();
+            }
+            [TestCase(0)]
+            [TestCase(1)]
+            [TestCase(2)]
+            [TestCase(3)]
+            [TestCase(4)]
+            [TestCase(5)]
+            public void SliderRigth(int count)
+            {
+               
+                for (int i = 0; i < count; i++)
+                {
+
+                    mainPage.clickSliderNext();
+                }
+                Assert.AreEqual(count, mainPage.GetNumOfActiveSliderItem());
             }
         }
     }
