@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using MakeUpTests.POMs;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -43,6 +44,8 @@ namespace MakeUpTests
         ProductPagePOM productPage;
         FeedbackFormPOM feedbackFormPOM;
         SubscribeFormPOM subscribeFormPOM;
+        CallBackPOM callBackPOM;
+        CheckOutPOM checkOutPOM;
 
         [SetUp]
         public void openMainPage()
@@ -53,6 +56,8 @@ namespace MakeUpTests
             productPage = new ProductPagePOM(driver);
             feedbackFormPOM = new FeedbackFormPOM(driver);
             subscribeFormPOM = new SubscribeFormPOM(driver);
+            callBackPOM = new CallBackPOM(driver);
+            checkOutPOM = new CheckOutPOM(driver);
             mainPage.goToPage();
             driver.Manage().Window.Maximize();
         }
@@ -123,7 +128,7 @@ namespace MakeUpTests
 
 
         [TestCase(1, "TestName", "TestSubject", "TestText12345")]
-        public void SendFeedbackForm(int id, string name, string subj, string message)
+        public void TestSendFeedbackForm(int id, string name, string subj, string message)
         {
             feedbackFormPOM.goToPage();
             feedbackFormPOM.selectDepartment(id);
@@ -135,16 +140,48 @@ namespace MakeUpTests
             Assert.AreEqual(feedbackFormPOM.ActSuccessText, feedbackFormPOM.getActSuccessText());
         }
 
-        [TestCase(1, "TestName", "TestSubject", "TestText12345")]
-        public void SubscribeForm(int id, string name, string subj, string message)
+        [Test]
+        public void TestSubscribeForm()
         {
             subscribeFormPOM.inputEmail(GenRandomEmail());
             subscribeFormPOM.clickButtonSubscribe();
             Assert.AreEqual(subscribeFormPOM.ActSuccessText, subscribeFormPOM.getActSuccessText());
         }
 
-        //https://makeup.com.ua/checkout/complete/
-        //body > div.site-wrap > div.main-wrap > div > div > div > h1
+        [TestCase("TestName", "+38 (099) 111 88 89", "TestText12345")]
+        public void TestCallBackForm(string name, string phone, string message)
+        {
+            callBackPOM.clickButtonCallBack();
+            callBackPOM.inputName(name);
+            callBackPOM.inputPhone(phone);
+            callBackPOM.inputMessage(message);
+            callBackPOM.clickButtonSend();
+            Assert.AreEqual(callBackPOM.ActSuccessText, callBackPOM.getActSuccessText());
+        }
+
+        [TestCase("Name","Surname", "+38 (099) 111 88 89", "Киев", "ул. Симиренко", "5")]
+        public void TestCheckOutProduct(string name, string surname, string phone, string city, string street, string home)
+        {
+            productPage.goToPage();
+            productPage.clickButtonBuy();
+            productPage.clickButtonOrder();
+            checkOutPOM.inputName(name);
+            checkOutPOM.inputSurname(surname);
+            checkOutPOM.inputPhone(phone);
+            checkOutPOM.inputEmail(GenRandomEmail());
+            checkOutPOM.clickButtonNext();
+            checkOutPOM.inputCity(city);
+            checkOutPOM.clickCityItem();
+            checkOutPOM.inputStreet(street);
+            checkOutPOM.inputHome(home);
+            checkOutPOM.chekDontCall();
+            checkOutPOM.clickButtonSubmit();
+            checkOutPOM.clickButtonSubmit();
+            
+            Assert.AreEqual(checkOutPOM.titleText, driver.Title);
+            Assert.AreEqual(checkOutPOM.CompleteUrl, driver.Url);
+        }
+
 
     }
 }

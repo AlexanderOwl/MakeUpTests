@@ -18,20 +18,21 @@ namespace MakeUpTests
         }
         string test_url = "https://makeup.com.ua/";
         By _menuItem_Parfums = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(1) > a");
-        By _menuItem_MakeUp = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(2)");
-        By _menuItem_Nails = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(3)");
-        By _menuItem_Hair = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(4)");
-        By _menuItem_Face = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(5)");
-        By _menuItem_BodyAndBath = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(6)");
-        By _menuItem_Mens = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(7)");
-        By _menuItem_Acssesories = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(8)");
-        By _menuItem_HealthAndCare = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(9)");
-        By _menuItem_Gift = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(10)");
+       
+        //By _menuItem_MakeUp = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(2)");
+        //By _menuItem_Nails = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(3)");
+        //By _menuItem_Hair = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(4)");
+        //By _menuItem_Face = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(5)");
+        //By _menuItem_BodyAndBath = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(6)");
+        //By _menuItem_Mens = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(7)");
+        //By _menuItem_Acssesories = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(8)");
+        //By _menuItem_HealthAndCare = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(9)");
+        //By _menuItem_Gift = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(10)");
 
 
-        By _menuItem_Brands = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(11)");
-        By _inputSearch = By.Id("search-input");
-        By _headerBasket = By.ClassName("header-basket");
+        //By _menuItem_Brands = By.CssSelector("body > div.site-wrap > div.main-wrap > nav > div.layout > ul > li:nth-child(11)");
+        //By _inputSearch = By.Id("search-input");
+        //By _headerBasket = By.ClassName("header-basket");
        
         By _sliderNext = By.ClassName("slider-arrow-next");
         By _sliderPrev = By.ClassName("slider-arrow-prev");       
@@ -51,7 +52,7 @@ namespace MakeUpTests
         By _linkTw = By.ClassName("tw");
         By _linkIg = By.ClassName("ig");
 
-        
+       
 
         public bool elementHasClass(IWebElement element, string active)
         {
