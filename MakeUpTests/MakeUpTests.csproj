@@ -55,12 +55,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FeedbackFormPOM.cs" />
-    <Compile Include="ParfumsPagePOM.cs" />
-    <Compile Include="ProductPagePOM.cs" />
-    <Compile Include="SeleniumTests.cs" />
-    <Compile Include="MainPagePOM.cs" />
+    <Compile Include="POMs\CallBackPOM.cs" />
+    <Compile Include="POMs\HeaderAccountPOM.cs" />
+    <Compile Include="POMs\CheckOutPOM.cs" />
+    <Compile Include="TESTs\HeaderAccountTest.cs" />
+    <Compile Include="POMs\HeaderLinksPOM.cs" />
+    <Compile Include="TESTs\HeaderLinksTest.cs" />
+    <Compile Include="POMs\FeedbackFormPOM.cs" />
+    <Compile Include="POMs\ParfumsPagePOM.cs" />
+    <Compile Include="POMs\ProductPagePOM.cs" />
+    <Compile Include="TESTs\AllTests.cs" />
+    <Compile Include="POMs\MainPagePOM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="POMs\SubscribeFormPOM.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
