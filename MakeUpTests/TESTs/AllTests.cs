@@ -169,11 +169,10 @@ namespace MakeUpTests
             checkOutPOM.inputCity(city);
             checkOutPOM.clickCityItem();
             checkOutPOM.inputStreet(street);
+            checkOutPOM.clickStreetItem();
             checkOutPOM.inputHome(home);
             checkOutPOM.chekDontCall();
             checkOutPOM.clickButtonSubmit();
-            checkOutPOM.clickButtonSubmit();
-            
             Assert.AreEqual(checkOutPOM.titleText, driver.Title);
             Assert.AreEqual(checkOutPOM.CompleteUrl, driver.Url);
         }

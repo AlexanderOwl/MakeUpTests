@@ -44,7 +44,6 @@ namespace MakeUpTests.POMs
         public void clickStreetItem()
         {
             IWebElement waitButton = (new WebDriverWait(_driver, TimeSpan.FromSeconds(20))).Until(ExpectedConditions.ElementToBeClickable(_streetItem));
-
             _driver.FindElement(_streetItem).Click();
 
         }
@@ -60,14 +59,14 @@ namespace MakeUpTests.POMs
         }
         public void clickButtonSubmit()
         {
-            IWebElement waitButton = (new WebDriverWait(_driver, TimeSpan.FromSeconds(20))).Until(ExpectedConditions.ElementToBeClickable(_buttonSubmit));
+            IWebElement waitButton = (new WebDriverWait(_driver, TimeSpan.FromSeconds(5))).Until(ExpectedConditions.ElementToBeClickable(_buttonSubmit));
 
             _driver.FindElement(_buttonSubmit).Click();
 
         }
         public void inputName(string text)
         {
-            IWebElement waitButton = (new WebDriverWait(_driver, TimeSpan.FromSeconds(20))).Until(ExpectedConditions.ElementIsVisible(_inputName));
+            IWebElement waitButton = (new WebDriverWait(_driver, TimeSpan.FromSeconds(5))).Until(ExpectedConditions.ElementIsVisible(_inputName));
             IWebElement input = _driver.FindElement(_inputName);
             input.SendKeys(text);
         }
@@ -88,17 +87,20 @@ namespace MakeUpTests.POMs
         }
         public void inputCity(string text)
         {
-            IWebElement waitButton = (new WebDriverWait(_driver, TimeSpan.FromSeconds(20))).Until(ExpectedConditions.ElementToBeClickable(_inputCity));
+            IWebElement waitButton = (new WebDriverWait(_driver, TimeSpan.FromSeconds(5))).Until(ExpectedConditions.ElementToBeClickable(_inputCity));
             IWebElement input = _driver.FindElement(_inputCity);
             input.SendKeys(text);
         }
         public void inputHome(string text)
         {
+            IWebElement waitButton = (new WebDriverWait(_driver, TimeSpan.FromSeconds(5))).Until(ExpectedConditions.ElementToBeClickable(_inputHome));
+
             IWebElement input = _driver.FindElement(_inputHome);
             input.SendKeys(text);
         }
         public void inputStreet(string text)
         {
+            IWebElement waitButton = (new WebDriverWait(_driver, TimeSpan.FromSeconds(5))).Until(ExpectedConditions.ElementToBeClickable(_inputStreet));
             IWebElement input = _driver.FindElement(_inputStreet);
             input.SendKeys(text);
         }
