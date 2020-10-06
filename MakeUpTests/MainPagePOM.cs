@@ -34,9 +34,9 @@ namespace MakeUpTests
         By _headerBasket = By.ClassName("header-basket");
         By _buttonCallBack = By.CssSelector("body > div.site-wrap > div.main-wrap > header > div.header-middle > div > div.header-contact > div.button");
         By _sliderNext = By.ClassName("slider-arrow-next");
-        By _sliderPrev = By.ClassName("slider-arrow-prev");       
+        By _sliderPrev = By.ClassName("slider-arrow-prev");
 
-        
+
 
         By _sliderItem1 = By.CssSelector("#slider > ul.slides > li:nth-child(2)");
         By _sliderItem2 = By.CssSelector("#slider > ul.slides > li:nth-child(3)");
@@ -52,6 +52,11 @@ namespace MakeUpTests
         By _linkYt = By.ClassName("yt");
         By _linkTw = By.ClassName("tw");
         By _linkIg = By.ClassName("ig");
+
+        By _linkDelivery = By.CssSelector("body > div.site-wrap > footer > div > div.footer-columns > div.footer-nav-wrap > div > div:nth-child(1) > h3 > a");
+        By _linkPayment = By.CssSelector("body > div.site-wrap > footer > div > div.footer-columns > div.footer-nav-wrap > div > div:nth-child(1) > ul > li:nth-child(1) > a");
+        By _linkabout = By.CssSelector("body > div.site-wrap > footer > div > div.footer-columns > div.footer-nav-wrap > div > div:nth-child(1) > ul > li:nth-child(2) > a");
+
 
         // By search
         By _searchField = By.Id("search-input");
@@ -71,16 +76,16 @@ namespace MakeUpTests
                                                                     _driver.FindElement(_sliderItem3),
                                                                     _driver.FindElement(_sliderItem4),
                                                                     _driver.FindElement(_sliderItem5),
-                                                                    _driver.FindElement(_sliderItem6) 
+                                                                    _driver.FindElement(_sliderItem6)
                                                                    };
             int count = 0;
             foreach (var item in SliderItems)
             {
-                if(elementHasClass(item, "active"))
+                if (elementHasClass(item, "active"))
                 {
                     return count;
                 }
-                count++;                
+                count++;
             }
             return 0;
         }
@@ -96,7 +101,7 @@ namespace MakeUpTests
             Actions action = new Actions(_driver);
             IWebElement slider = _driver.FindElement(By.Id("slider"));
             action.MoveToElement(slider).MoveToElement(_driver.FindElement(_sliderNext)).Click().Build().Perform();
-                  
+
         }
         public void clickSliderPrev()
         {
@@ -107,7 +112,7 @@ namespace MakeUpTests
         }
         public void goToPage()
         {
-            _driver.Navigate().GoToUrl(test_url);          
+            _driver.Navigate().GoToUrl(test_url);
         }
         public MainPagePOM clickPrafums()
         {
@@ -125,6 +130,20 @@ namespace MakeUpTests
             _driver.FindElement(_searchButton).Click();
         }
 
-        
+        public void CheckLinkFooter(string namelink)
+        {
+            switch (namelink)
+            {
+                case "delivery":
+                    _driver.FindElement(_linkDelivery).Click();
+                    break;
+                case "payment":
+                    _driver.FindElement(_linkPayment).Click();
+                    break;
+                case "aboutProduct":
+                    _driver.FindElement(_linkabout).Click();
+                    break;
+            }
+        }
     }
 }

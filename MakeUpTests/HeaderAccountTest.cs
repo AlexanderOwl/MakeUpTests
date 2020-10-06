@@ -34,6 +34,26 @@ namespace MakeUpTests
             Assert.AreEqual("Кабинет", headerAccount.NameAccount());
         }
 
+        /*
+        [TestCase("name","TestTest")]
+        public void ChangeUserData(string operation, string newText)
+        {
+            headerAccount.ClickCabinet();
+            headerAccount.TypeUserLogin("test1313@mailinator.com");
+            headerAccount.TypeUserPassword("1313");
+            headerAccount.ClickLogInButton();
+
+            driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(100);
+
+            headerAccount.ClickCabinet();
+            headerAccount.ChangeUserInfo(operation, newText);
+            headerAccount.ClickSave();
+            headerAccount.ClicClose();
+            headerAccount.ReturnText(operation);
+
+            Assert.Equals(headerAccount.ReturnText(operation), newText);
+        }
+        */
 
 
 

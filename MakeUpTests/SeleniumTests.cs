@@ -138,7 +138,7 @@ namespace MakeUpTests
                 feedbackFormPOM.inputMessage(message);
             }
 
-            [TestCase("тушь")]
+            [TestCase("Тушь")]
             public void SearchProductWithSearchInput(string productName)
             {
                 mainPage.goToPage();
@@ -146,8 +146,20 @@ namespace MakeUpTests
 
                 bool hasTextPageHeader = CatalogPOM.HasTextPageHeader(productName);
                 bool hasProduct = CatalogPOM.HasProduct(productName);
+
+                driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
                 Assert.True(hasTextPageHeader);
                 Assert.True(hasProduct);
+            }
+
+            [TestCase("delivery", "https://makeup.com.ua/delivery/")]
+            [TestCase("payment", "https://makeup.com.ua/payment/")]        
+            [TestCase("aboutProduct", "https://makeup.com.ua/about/3/")]
+            public void NavigateToFooterLinks(string link, string expected)
+            {
+                mainPage.CheckLinkFooter(link);
+                string actual = driver.Url;
+                Assert.AreEqual(expected, actual);
             }
         }
     }
