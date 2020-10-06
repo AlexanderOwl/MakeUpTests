@@ -55,8 +55,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-        
     <Compile Include="POMs\CallBackPOM.cs" />
+    <Compile Include="POMs\CatalogPOM.cs" />
     <Compile Include="POMs\HeaderAccountPOM.cs" />
     <Compile Include="POMs\CheckOutPOM.cs" />
     <Compile Include="TESTs\HeaderAccountTest.cs" />
