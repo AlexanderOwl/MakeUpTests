@@ -55,21 +55,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CatalogPOM.cs" />
-    <Compile Include="HeaderAccountPOM.cs" />
-    <Compile Include="HeaderAccountTest.cs" />
-    <Compile Include="HeaderLinksPOM.cs" />
-    <Compile Include="HeaderLinksTest.cs" />
-    <Compile Include="FeedbackFormPOM.cs" />
-    <Compile Include="ParfumsPagePOM.cs" />
-    <Compile Include="ProductPagePOM.cs" />
-    <Compile Include="SeleniumTests.cs" />
-    <Compile Include="MainPagePOM.cs" />
+    <Compile Include="POMs\CatalogPOM.cs" />
+    <Compile Include="POMs\HeaderAccountPOM.cs" />
+    <Compile Include="TESTs\HeaderAccountTest.cs" />
+    <Compile Include="POMs\HeaderLinksPOM.cs" />
+    <Compile Include="TESTs\HeaderLinksTest.cs" />
+    <Compile Include="POMs\FeedbackFormPOM.cs" />
+    <Compile Include="POMs\ParfumsPagePOM.cs" />
+    <Compile Include="POMs\ProductPagePOM.cs" />
+    <Compile Include="TESTs\AllTests.cs" />
+    <Compile Include="POMs\MainPagePOM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
